@@ -6,7 +6,7 @@ const playButton = document.getElementById('play-button');
 const backButton = document.getElementById('back-button');
 const timeElapsedBar = document.getElementById('time-elapsed');
 const audio = document.createElement("AUDIO");
-audio.src = './bensound-ukulele.mp3';
+audio.src = './files/bensound-ukulele.mp3';
 
 let playAudioInterval;
 
