@@ -1,37 +1,51 @@
 body{
-    background-color: black;
-    color: white;
-    height: 88vh;
+    background-color: white;
+    color: #000;
+    height: 80vh;
 }
 
 .content{
     position: relative;
-    height: 100%;
+    height: 100vh;
 }
 
+.card{
+  height:20vh;
+  width:25%;
+  border:1px solid rgb(230,230,230);
+  border-radius:1em;
+  padding:1em;
+  margin-bottom:2em;
+}
+
+.card:hover{
+  background-color:rgb(240,240,240);
+  cursor:pointer;
+}
 #audio-player-container{
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 1em;
     background-color: whitesmoke;
-    color: black;
+    opacity:90%;
     bottom: 0;
     left: 0;
     right: 0;
 }
 
 .audio-player-range{
-    position: absolute;
+    position: fixed;
     height: 1em;
-    bottom: 7%;
+    bottom: 25%;
+    opacity: 60%;
 }
 
 #time-elapsed{
     left: 0;
     width: 0%;
-    background-color: red;
+    background-color: blue;
     z-index: 1;
 }
 #time-left{

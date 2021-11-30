@@ -12,16 +12,30 @@
 <body>
     <h1>Audio Player</h1>
     <div class="content">
+        <div class="card" id="niantic">
+          <h2>Niantic: A Ship as a Building</h2>
+        </div>
+        <div class="card" id="other">
+          <h2>Other: A Ship as a Something Else</h2>
+        </div>
         <div class="audio-player-range" id="time-elapsed"></div>
         <div class="audio-player-range" id="time-left"></div>
         <div id="audio-player-container">
             <div class="audio-header">
-                <p>Niantic: A Ship As A Building</p>
+                <p id="audio-title"></p>
+              <p><span id="currentTime">0:00</span>/<span id="duration">3:00</span></p>
             </div>
-            <div class="audio-player-buttons">
-                <i class="fas fa-step-backward" id="back-button"></i>
-                <i class="fas fa-play" id="play-button"></i>
-                <i class="fas fa-step-forward"></i>
+            <div class="audio-controls">
+                <div class="audio-player-buttons">
+                    <i class="fas fa-step-backward" id="back-button"></i>
+                    <i class="fas fa-undo" id="minus-10-secs"></i>
+                    <i class="fas fa-play" id="play-button"></i>
+                    <i class="fas fa-redo-alt" id="plus-10-secs"></i>
+                    <i class="fas fa-step-forward"></i>
+                </div>
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange" onchange="handleSliderChange(event)">
+                </div>
             </div>
         </div>
     </div>
