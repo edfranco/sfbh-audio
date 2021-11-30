@@ -2,7 +2,10 @@ const state = {
     play: false,
     currentTrack: String,
     seconds: 0,
-    minutes: 0
+    minutes: 0,
+    currentVolume: 0,
+    previousVolume:0,
+    muted: false
 };
 
 let playAudioInterval;
@@ -13,6 +16,8 @@ const backButton = document.getElementById('back-button');
 const minusButton = document.getElementById('minus-10-secs');
 const plusButton = document.getElementById('plus-10-secs');
 const audioTitle = document.getElementById('audio-title');
+const muteButton = document.getElementById('mute-button');
+const audioSlider = document.getElementById('myRange');
 
 const duration = document.getElementById('duration');
 const currentTime = document.getElementById('currentTime');
@@ -26,7 +31,7 @@ const trackList = [
 state.currentTrack = trackList[0]
 const audio = document.createElement("AUDIO");
 audio.src = state.currentTrack;
-audio.volume = document.getElementById('myRange').value / 100;
+state.currentVolume = audio.volume = audioSlider.value / 100;
 
 function secondsToHms(d) {
     d = Number(d);
@@ -41,9 +46,9 @@ function secondsToHms(d) {
 }
 
 const handleSliderChange = event =>{
-    audio.volume = event.target.value / 100;
+    state.currentVolume = audio.volume = event.target.value / 100;
     audio.volume == 0.01 ? audio.volume = 0 : null;
-    console.log(audio.volume);
+    console.log(state.volume, audio.volume);
 }
 
 const changeAudioButtons = () =>{
@@ -78,6 +83,11 @@ playButton.addEventListener('click', () => {
     state.play = !state.play;
     changeAudioButtons();
     toggleAudio();
+});
+
+muteButton.addEventListener('click', () => {
+    state.muted ? (audio.volume = state.previousVolume, audioSlider.value = state.previousVolume * 100, state.muted = !state.muted) : (state.previousVolume = state.currentVolume, audio.volume = 0, audioSlider.value = 0, state.muted = !state.muted);
+    console.log(`the previous volume was `,state.previousVolume);
 });
 
 backButton.addEventListener('click', () => {
